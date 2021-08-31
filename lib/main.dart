@@ -25,6 +25,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool currentColor = false;
+  bool currentColor2 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +42,18 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-              child: Text("Desenvolvimento mobile"),
+              child: Text(
+                "Desenvolvimento mobile",
+                style:
+                    TextStyle(color: currentColor ? Colors.red : Colors.blue),
+              ),
               onTap: () {
+                setState(() {
+                  currentColor = !currentColor;
+                });
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text("Lorem Ipsum?"),
+                  content: Text(
+                      "You choosed ${currentColor ? 'red' : 'blue'} for the text"),
                   behavior: SnackBarBehavior.floating,
                 ));
               },
@@ -51,10 +62,18 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 50,
             ),
             InkWell(
-              child: Text("Desenvolvimento mobile"),
+              child: Text(
+                "Desenvolvimento mobile",
+                style: TextStyle(
+                    color: currentColor2 ? Colors.black : Colors.pink),
+              ),
               onTap: () {
+                setState(() {
+                  currentColor2 = !currentColor2;
+                });
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text("Lorem Ipsum?"),
+                  content: Text(
+                      "You choosed ${currentColor2 ? 'black' : 'pink'} for the text"),
                   behavior: SnackBarBehavior.floating,
                 ));
               },
